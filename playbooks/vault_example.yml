@@ -1,0 +1,28 @@
+
+- name: Converted adhoc command example
+  hosts: all
+  become: True   
+  tasks:
+
+    - name: Load variable for an encrypted password file 
+      include_vars:
+        file: /big_ssd/shared_folder/devops/ansible/passwd
+
+    - name: display the encrypted variable
+      debug:
+        msg: "{{ secret }}"
+    
+    - name: Create a user 
+      user:
+        name: "{{ username ['test']['uname'] }}" 
+        comment: "{{ username ['test']['description'] }}"
+        password: "{{ username ['test']['password'] }}"
+        state: present
+        groups: wheel 
+
+   
+
+
+
+
+    

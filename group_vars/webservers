@@ -1,0 +1,12 @@
+#Variables for webserver group
+username:
+      test:
+        uname: webuser
+        password: "{{secret}}"
+        description: test user account
+
+#web users to loop through during creation 
+web_users:
+ - web_users1
+ - web_users2
+ - web_users3

@@ -1,0 +1,31 @@
+- name: Create users according to their group 
+  hosts: all
+  become: True
+
+  #create user on database group 
+  tasks:
+    - name: Create user db users
+      user: 
+        name: "{{ item }}"
+        state: absent 
+      loop: "{{ db_servers }}"
+      when: "'dbservers' in group_names"
+      notify: Reboot
+
+    #Create all users defined in "web_users" if they below ing "webservers group" defined in hosts  
+  
+    - name: Create webusers
+      user: 
+        name: "{{ item }}"
+        state: absent 
+      loop: "{{ web_users }}"
+      when: "'webservers' in group_names"
+      notify: Reboot
+  
+  handlers:
+    - name: Reboot
+      reboot: 
+
+
+
+

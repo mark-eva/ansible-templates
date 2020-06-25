@@ -1,0 +1,11 @@
+#Variables for webserver group
+username:
+      test:
+        uname: dbuser
+        password: "{{secret}}"
+        description: db user account produced using group_vars
+
+db_servers:
+ - db_users1
+ - db_users2
+ - db_users3

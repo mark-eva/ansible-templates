@@ -1,0 +1,6 @@
+
+- name: Creating new users
+  hosts: all 
+  become: true
+  roles:
+    - myrole

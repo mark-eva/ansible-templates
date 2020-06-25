@@ -1,0 +1,19 @@
+- name: Converted adhoc command example
+  hosts: webservers
+  become: True
+  tasks:
+
+    - name: Create ansibe user 
+      user:
+        name: ansible 
+        state: present
+        groups: wheel 
+
+    - name: enable ansible  user to sudo login without password   
+      lineinfile:
+        state: present 
+        path: /etc/sudoers
+        line: "ansible ALL=(ALL) NOPASSWD: ALL"
+
+
+    

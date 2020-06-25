@@ -1,0 +1,15 @@
+- name: Create all users defined in the webserver group variable file
+  hosts: webservers
+  become: True
+
+  tasks:
+    - name: 
+      user: 
+        name: "{{ item }}"
+        state: present 
+      loop: "{{webusers}}"
+
+
+
+
+

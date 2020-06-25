@@ -1,0 +1,25 @@
+
+- name: Converted adhoc command example
+  hosts: all
+  become: True
+  vars: 
+    username:
+      test:
+        uname: test
+        description: test user account 
+    
+  tasks:
+
+
+    - name: Create a user 
+      user:
+        name: "{{ username ['test']['uname'] }}" 
+        comment: "{{ username ['test']['description'] }}"
+        state: present
+        groups: wheel 
+
+   
+
+
+
+    

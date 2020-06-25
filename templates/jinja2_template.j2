@@ -1,0 +1,11 @@
+{#This is a template for /etc/host/file#}
+
+#webservers
+{% for hosts in groups ['webservers'] %}
+{{ ansible_facts ['default_ipv4'] ['address'] }} {{ansible_facts ['fqdn']}}
+{% endfor %}
+
+#dbservers
+{% for hosts in groups ['dbservers'] %}
+{{ ansible_facts ['default_ipv4'] ['address'] }} {{ansible_facts ['fqdn']}}
+{% endfor %}

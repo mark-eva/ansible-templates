@@ -1,0 +1,31 @@
+- name: block rescue always example
+  hosts: dbservers
+  become: True
+
+  tasks:
+    - name: install a postgressql database 
+      
+      block: 
+        - name: start of the blockexecution
+          debug:
+            msg: "I'm part of the block msg biatch"
+
+        - name: install the postgressql
+          yum:
+            name: postgresql-server
+            state: latest
+
+
+      rescue: 
+        - name: Display rescue msg 
+          debug:
+            msg: "If you see this it means the postgres installation failed"
+
+      always:
+        - name: Display always msg 
+          debug:
+            msg: "Fuck you anyways I will always be here"
+
+
+          
+

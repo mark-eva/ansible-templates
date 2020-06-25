@@ -1,0 +1,7 @@
+---
+- name: Utilise the playbook downloaded in Ansible galaxy for Apache installation on Centos
+  hosts: webservers
+  become: True
+
+  roles:
+    - { role: mariuszczyz.centos_apache, tags: ['my_centos_apache']} 

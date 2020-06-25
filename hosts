@@ -1,0 +1,14 @@
+
+[webservers]
+dga.localdomain
+dgb.localdomain
+
+[dbservers]
+dgc.localdomain
+
+[fullstack:children]
+dbservers
+webservers
+
+[postgres_aws]
+34.250.82.36

@@ -1,0 +1,7 @@
+---
+  - name: Update apt
+    yum: 
+      name: httpd
+      state: latest
+    notify: Reboot
+

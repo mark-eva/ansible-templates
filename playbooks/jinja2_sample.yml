@@ -1,0 +1,29 @@
+- name: Jinja2 example
+  hosts: dbservers
+  become: True
+  tasks:
+
+    - name: Deploy message of the day template
+      template: 
+        src: ../templates/motd.j2
+        dest: /etc/motd
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Deploy /etc/host template
+      template: 
+        src: ../templates/jinja2_template.j2
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: "0644"
+
+        
+
+
+     
+
+
+
+    

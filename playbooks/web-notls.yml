@@ -1,0 +1,21 @@
+- name: Configure webserver with nginx
+  hosts: dbservers
+  become: True
+  tasks:
+
+    - name: Add epel-release repo
+      yum:
+        name: epel-release
+        state: present
+
+    - name: install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: copy nginx config file
+      copy: src=files/nginx.conf dest=/usr/share/nginx/html/index.html
+
+   
+    - name: restart nginx
+      service: name=nginx state=restarted
